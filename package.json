@@ -4,7 +4,7 @@
     "description": "This is MERN Workshop project that is for server development",
     "main": "index.js",
     "scripts": {
-        "start": "app.js"
+        "start": "nodemon app.js"
     },
     "keywords": [
         "MERN",
