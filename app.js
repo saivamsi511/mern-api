@@ -1,16 +1,26 @@
 const express = require("express");
 const nodemon = require("nodemon")
 const morgan = require("morgan")
+const { connectDb} = require("./database")
+const  postsroute  = require("./routers/postrouter");
 const app = express();
+const studentroute = require("./routers/sturouter")
+const dotenv = require("dotenv")
+const cors = require("cors")
+dotenv.config();
+const PORT = process.env.PORT
 
-
-const PORT = 3000;
-const userrouter = require("./routers/userrouter")
+// const PORT = 3000;
+// const userrouter = require("./routers/postrouter")
+app.use(cors);
 app.use(express.json())
 app.use(express.urlencoded({extended:true}));
 // app.use("/",userrouter);
 app.use(morgan("dev"))
+app.use("/posts",postsroute)
+app.use("/students",studentroute)
 
+connectDb();
 
 let students=[
     {name:"vamsi",rollno:521},
